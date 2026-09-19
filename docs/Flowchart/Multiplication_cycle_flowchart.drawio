@@ -1,0 +1,113 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="et48SWGRsNw6cEvJ7phX">
+    <mxGraphModel dx="1782" dy="1038" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-3" edge="1" parent="1" source="LeCEbCT6qWfe3mtgBUXK-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="LeCEbCT6qWfe3mtgBUXK-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-1" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" value="&lt;b&gt;Start Multiplication&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="375" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="&lt;b&gt;Initialization (LOAD state)&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;Accumulator ( A = 0) : P[15:8]&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;Booth Bit: P[-1] = 0&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;M: Multiplicand Input (8-bits)&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;Q: Multiplier Input (P[7:0])&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;Count = 0&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="230" x="310" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-9" edge="1" parent="1" source="LeCEbCT6qWfe3mtgBUXK-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="LeCEbCT6qWfe3mtgBUXK-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="425" y="440" as="sourcePoint" />
+            <mxPoint x="426" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-4" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" value="Check&lt;div&gt;P[0] &amp;amp; P[-1]&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="100" x="375" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-6" edge="1" parent="1" source="LeCEbCT6qWfe3mtgBUXK-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="LeCEbCT6qWfe3mtgBUXK-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-12" edge="1" parent="1" source="LeCEbCT6qWfe3mtgBUXK-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="LeCEbCT6qWfe3mtgBUXK-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-15" edge="1" parent="1" source="LeCEbCT6qWfe3mtgBUXK-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="426" y="460" />
+              <mxPoint x="320" y="460" />
+              <mxPoint x="320" y="600" />
+              <mxPoint x="426" y="600" />
+            </Array>
+            <mxPoint x="426" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="&lt;b&gt;A = A + M&lt;/b&gt;&lt;div&gt;&lt;b&gt;(Addition)&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="95" x="378" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-14" edge="1" parent="1" source="LeCEbCT6qWfe3mtgBUXK-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" target="LeCEbCT6qWfe3mtgBUXK-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="548" y="460" />
+              <mxPoint x="426" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-16" edge="1" parent="1" source="LeCEbCT6qWfe3mtgBUXK-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="LeCEbCT6qWfe3mtgBUXK-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="548" y="620" />
+              <mxPoint x="426" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="&lt;b&gt;A = A - M&lt;/b&gt;&lt;div&gt;&lt;b&gt;(Subtraction)&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="95" x="500" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-21" edge="1" parent="1" source="LeCEbCT6qWfe3mtgBUXK-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="LeCEbCT6qWfe3mtgBUXK-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="&lt;b&gt;Arithmetic Shift Right&lt;/b&gt;&lt;div&gt;&lt;b&gt;{A, Q, Q-1}: (P[15:0],P[-1])&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;(Preserve sign bit of A: P[15:8])&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="195.5" x="327.75" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-17" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;00 or 11&lt;/b&gt;&lt;div&gt;&lt;b&gt;(No Operation)&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="92" x="298" y="422" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;01&lt;/b&gt;&lt;div&gt;&lt;b&gt;(A + M)&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="42" x="433" y="422" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-19" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;10&lt;/b&gt;&lt;div&gt;&lt;b&gt;(A - M)&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="42" x="523.25" y="422" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-20" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="&lt;b&gt;Count = Count + 1&lt;/b&gt;" vertex="1">
+          <mxGeometry height="50" width="132" x="359.5" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-24" edge="1" parent="1" source="LeCEbCT6qWfe3mtgBUXK-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="LeCEbCT6qWfe3mtgBUXK-27">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="429" y="970" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-22" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" value="&lt;b&gt;Count == 7?&lt;/b&gt;" vertex="1">
+          <mxGeometry height="70" width="102" x="378" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-23" edge="1" parent="1" source="LeCEbCT6qWfe3mtgBUXK-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="LeCEbCT6qWfe3mtgBUXK-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-25" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;Yes&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="30" x="439" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-27" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" value="Done&lt;div&gt;Product = {A, Q}&lt;/div&gt;&lt;div&gt;(16-bit signed result)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="151" x="353.5" y="970" as="geometry" />
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-28" edge="1" parent="1" source="LeCEbCT6qWfe3mtgBUXK-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="LeCEbCT6qWfe3mtgBUXK-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="875" />
+              <mxPoint x="230" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LeCEbCT6qWfe3mtgBUXK-29" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;No&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="30" x="345" y="880" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
