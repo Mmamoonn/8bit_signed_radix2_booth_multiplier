@@ -1,5 +1,5 @@
 module controller (
-    input  logic clk, rst_n, start, count_max,
+    input  logic clk, rst, start, count_max,
     output logic busy, done, load, arithmetic_shift_right, count_enable
 );
   // State Encoding
@@ -14,7 +14,7 @@ module controller (
 
     // Block 1: Synchronous State Register
     always_ff @(posedge clk) begin
-      if (!rst_n) begin
+      if (!rst) begin
         current <= IDLE;
       end 
       else begin
