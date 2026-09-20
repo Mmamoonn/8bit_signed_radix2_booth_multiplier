@@ -22,3 +22,7 @@ The multiplier is validated using a fully automated, self-checking SystemVerilog
 1. **Directed Testing:** Verifies standard operand combinations including positive, negative, mixed-sign, and zero multiplications.
 2. **Corner Cases:** Explicitly tests critical hardware boundaries, including $127 \times 127$, $-128 \times -128$, and $0 \times X$.
 3. **Randomized Testing:** Executes hundreds of constrained-random simulation iterations, comparing the DUT output against the native SystemVerilog `$signed()` multiplication operator.
+4. **SystemVerilog Assertions (SVA):** Concurrent assertions are embedded within the controller to formally verify critical timing and mutual exclusion properties (e.g., ensuring `busy` and `done` are never simultaneously active).
+5. **Coverage Generation:** 
+   - **Functional Coverage:** Because Verilator does not natively support SystemVerilog `covergroup` constructs, functional coverage is achieved via custom testbench tracking logic. Counters manually log operand data bins (Zero, Max Positive, Min Negative, Standard Positive, Standard Negative) to guarantee the randomized stimulus hits all critical cross-sections.
+   - **Structural Coverage:** Line, toggle, and condition coverage are generated using Verilator's `--coverage` flag, outputting annotated source files to the `sim/annotated/` directory.

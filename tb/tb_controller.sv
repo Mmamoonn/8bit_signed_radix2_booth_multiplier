@@ -11,7 +11,7 @@ module tb_controller;
         
         // 1. Reset Phase
         rst = 0; start = 0; count_max = 0;
-        #15 rst_n = 1;
+        #15 rst = 1;
         @(posedge clk);
         
         // Check IDLE state

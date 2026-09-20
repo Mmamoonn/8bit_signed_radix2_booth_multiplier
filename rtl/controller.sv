@@ -77,8 +77,8 @@ module controller (
 
     // 3. Calculation Integrity: shift and count enable must be active together
     property p_calc_enables;
-        @(posedge clk) disable iff (!rst_n)
-        (current_state == CALCULATE) |-> (arithmetic_shift_right && count_enable);
+        @(posedge clk) disable iff (!rst)
+        (current == CALCULATE) |-> (arithmetic_shift_right && count_enable);
     endproperty
     assert property (p_calc_enables) else $error("SVA Violation: Shift or Count missing during CALCULATE.");
 endmodule

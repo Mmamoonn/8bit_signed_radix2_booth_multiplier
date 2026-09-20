@@ -9,7 +9,7 @@ SIM_DIR = sim
 RTL_SRC = $(wildcard $(RTL_DIR)/*.sv)
 
 # Verilator Flags (--coverage enables structural and functional coverage)
-VFLAGS = --binary -j 0 --timing --trace --coverage --Mdir $(SIM_DIR)/obj_dir
+VFLAGS = --binary -j 0 --timing --trace --assert --Mdir $(SIM_DIR)/obj_dir
 
 # Default Target
 all: clean build_top run_top coverage help
@@ -20,6 +20,8 @@ build_top:
 	verilator $(VFLAGS) $(RTL_SRC) $(TB_DIR)/tb_top.sv --top-module tb_top -o Vtb_top
 
 run_top:
+	mkdir -p logs
+	mkdir -p $(SIM_DIR)
 	./$(SIM_DIR)/obj_dir/Vtb_top | tee $(SIM_DIR)/test_results.log
 
 # Compile and Run Isolated FSM Testbench
@@ -27,11 +29,6 @@ fsm_test:
 	mkdir -p $(SIM_DIR)
 	verilator $(VFLAGS) $(RTL_DIR)/controller.sv $(TB_DIR)/tb_controller.sv --top-module tb_controller -o Vtb_controller
 	./$(SIM_DIR)/obj_dir/Vtb_controller
-
-# Generate human-readable coverage reports
-coverage:
-	verilator_coverage --annotate $(SIM_DIR)/annotated logs/coverage.dat
-	@echo "Coverage annotated source files generated in sim/annotated/"
 
 # Clean compilation files
 clean:

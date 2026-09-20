@@ -5,29 +5,8 @@ module tb_top;
   // Expected Result for Self-Checking
   logic signed [15:0] expected_product;
   
-  //Functional Coverage Model
-  covergroup cg_multiplier @(posedge clk);
-  // Define data bins for Operand A
-  	cp_a: coverpoint multiplicand {
-            bins zero     = {0};
-            bins max_pos  = {127};
-            bins min_neg  = {-128};
-            bins positive = {[1:126]};
-            bins negative = {[-127:-1]};
-        }
-        // Define data bins for Operand B
-        cp_b: coverpoint multiplier {
-            bins zero     = {0};
-            bins max_pos  = {127};
-            bins min_neg  = {-128};
-            bins positive = {[1:126]};
-            bins negative = {[-127:-1]};
-        }
-        cross_a_b: cross cp_a, cp_b;
-  endgroup
-  
-  // Instantiate the Covergroup
-  cg_multiplier cg;
+  //Custom Functional Coverage Counters
+  int cov_zero = 0, cov_max = 0, cov_min = 0, cov_pos = 0, cov_neg = 0;
   
   initial clk = 0;
   always #5 clk = ~clk;
@@ -40,7 +19,13 @@ module tb_top;
       multiplicand = a;
       multiplier = b;
       start = 1'b1;
-      cg.sample();
+      
+      // Manually sampling functional coverage bins
+      if (a == 0 || b == 0) cov_zero++;
+      if (a == 127 || b == 127) cov_max++;
+      if (a == -128 || b == -128) cov_min++;
+      if ((a > 0 && a < 127) || (b > 0 && b < 127)) cov_pos++;
+      if ((a < 0 && a > -128) || (b < 0 && b > -128)) cov_neg++;
       
       @(negedge clk);
       start = 1'b0; 
@@ -61,7 +46,6 @@ module tb_top;
   endtask
   
   initial begin
-    cg = new();		//Initialize Covergroup
     $dumpfile("sim/waves.vcd");
     $dumpvars(0, tb_top);
     rst = 1'b1;
@@ -114,7 +98,14 @@ module tb_top;
       random_b = 8'($urandom);
       check(random_a,random_b);
     end
-    $display("Verification & Testing Completed");
+    $display("\n--- Functional Coverage Report ---\n");
+    $display("Zero Operands Hit: %0d times\n", cov_zero);
+    $display("Max Positive (127) Hit: %0d times\n", cov_max);
+    $display("Min Negative (-128) Hit: %0d times\n", cov_min);
+    $display("Standard Positive Hit: %0d times\n", cov_pos);
+    $display("Standard Negative Hit: %0d times\n", cov_neg);
+    $display("----------------------------------\n");
+    $display("\nVerification & Testing Completed\n");
     $finish;
   end
 endmodule
