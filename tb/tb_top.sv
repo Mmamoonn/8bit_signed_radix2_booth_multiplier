@@ -5,6 +5,30 @@ module tb_top;
   // Expected Result for Self-Checking
   logic signed [15:0] expected_product;
   
+  //Functional Coverage Model
+  covergroup cg_multiplier @(posedge clk);
+  // Define data bins for Operand A
+  	cp_a: coverpoint multiplicand {
+            bins zero     = {0};
+            bins max_pos  = {127};
+            bins min_neg  = {-128};
+            bins positive = {[1:126]};
+            bins negative = {[-127:-1]};
+        }
+        // Define data bins for Operand B
+        cp_b: coverpoint multiplier {
+            bins zero     = {0};
+            bins max_pos  = {127};
+            bins min_neg  = {-128};
+            bins positive = {[1:126]};
+            bins negative = {[-127:-1]};
+        }
+        cross_a_b: cross cp_a, cp_b;
+  endgroup
+  
+  // Instantiate the Covergroup
+  cg_multiplier cg;
+  
   initial clk = 0;
   always #5 clk = ~clk;
 
@@ -16,6 +40,7 @@ module tb_top;
       multiplicand = a;
       multiplier = b;
       start = 1'b1;
+      cg.sample();
       
       @(negedge clk);
       start = 1'b0; 
@@ -36,6 +61,7 @@ module tb_top;
   endtask
   
   initial begin
+    cg = new();		//Initialize Covergroup
     $dumpfile("sim/waves.vcd");
     $dumpvars(0, tb_top);
     rst = 1'b1;
