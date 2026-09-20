@@ -1,4 +1,3 @@
-`timescale 1ns/1ps
 module tb_top;
   logic clk, rst, start, busy, done;
   logic signed [7:0]  multiplicand, multiplier;
@@ -22,7 +21,7 @@ module tb_top;
       start = 1'b0; 
       // Wait for the FSM to assert the done flag
       wait(done == 1'b1);
-      expected_product = signed(a) * signed(b);
+      expected_product = $signed(a) * $signed(b);
             
       // Self-Checking Verification
       if (product !== expected_product) begin
@@ -85,9 +84,9 @@ module tb_top;
     $display("Testing - Phase 3: Randomized Testing (200 - Random Tests)\n");
     for(int i = 0; i < 200; i++) begin
       logic [7:0] random_a, random_b;
-      random_a = $urandom;
-      random_b = $urandom;
-      check(random_a.random_b);
+      random_a = 8'($urandom);
+      random_b = 8'($urandom);
+      check(random_a,random_b);
     end
     $display("Verification & Testing Completed");
     $finish;

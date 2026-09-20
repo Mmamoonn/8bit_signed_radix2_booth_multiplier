@@ -17,7 +17,7 @@ module datapath (
 
     // Combinational Wires
     logic add_en, sub_en;
-    logic signed [7:0]  alu_out, mux_out;
+    logic signed [8:0]  alu_out, mux_out;
     
     // Instantiate Booth Encoder
     booth_encoder encoder (.p_0(P[0]),.booth_bit(booth_bit),.add_en(add_en),.sub_en(sub_en));
@@ -26,7 +26,7 @@ module datapath (
     adder_subtractor alu (.a(P[15:8]),.m(M),.add_en(add_en),.sub_en(sub_en),.result(alu_out));
 
     // 2-to-1 Multiplexer
-    assign mux_out = (add_en | sub_en) ? alu_out : P[15:8];
+    assign mux_out = (add_en | sub_en) ? alu_out : {P[15], P[15:8]};
 
     // Status & Product Assignment
     assign product   = P;
@@ -43,13 +43,13 @@ module datapath (
       else if (load) begin
         M <= multiplicand_in;
         P <= {8'b0, multiplier_in}; // Declaring and Initializing Product P[15:8]: Upper bits = 0 P[15:8] & Lower Bits = Multipler Input P[7;0]
-        booth _bit <= 1'b0;                 // Initially Booth bit = 0
+        booth_bit <= 1'b0;                 // Initially Booth bit = 0
         count <= 3'b0;		           // Reset iteration counter
       end 
       else begin
         // Shift Right Arithmetic
         if (arithmetic_shift_right) begin
-          P <= {mux_out[7], mux_out, P[7:1]}; 
+          P <= {mux_out[8:0], P[7:1]}; 
           booth_bit <= P[0];
         end
         if (count_enable) begin
