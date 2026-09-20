@@ -13,7 +13,7 @@ The design adheres to a modular architecture, isolating the sequential control l
 ## System Diagrams
 Architectural flowcharts and state diagrams detailing the hardware routing and FSM logic are available in the `docs/` directory:
 * [Datapath Block Diagram](docs/Datapath/datapath.drawio.png)
-* [Controller FSM State Diagram](docs/Controller_FSM_StateDiagram/controller_fsm(statediagram).drawio.png)
+* [Controller FSM State Diagram](docs/Controller_FSM_StateDiagram/controller_fsm(state diagram).drawio.png)
 * [Booth Algorithm Flowchart](docs/Flowchart/Multiplication_cycle_flowchart.drawio.png)
 
 ## Verification Methodology
