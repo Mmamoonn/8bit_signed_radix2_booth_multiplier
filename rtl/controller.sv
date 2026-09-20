@@ -59,4 +59,26 @@ module controller (
         end
       endcase
     end
+    // SystemVerilog Assertions (SVA)
+    
+    // 1. Mutual Exclusion: busy and done should never be high simultaneously
+    property p_busy_done_mutex;
+        @(posedge clk) disable iff (!rst)
+        not (busy && done);
+    endproperty
+    assert property (p_busy_done_mutex) else $error("SVA Violation: busy and done are both HIGH.");
+
+    // 2. Single Cycle Load: 'load' must only remain high for exactly one clock cycle
+    property p_load_single_cycle;
+        @(posedge clk) disable iff (!rst)
+        load |=> !load;
+    endproperty
+    assert property (p_load_single_cycle) else $error("SVA Violation: load asserted for multiple cycles.");
+
+    // 3. Calculation Integrity: shift and count enable must be active together
+    property p_calc_enables;
+        @(posedge clk) disable iff (!rst_n)
+        (current_state == CALCULATE) |-> (arithmetic_shift_right && count_enable);
+    endproperty
+    assert property (p_calc_enables) else $error("SVA Violation: Shift or Count missing during CALCULATE.");
 endmodule
