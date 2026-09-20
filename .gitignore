@@ -1,0 +1,13 @@
+# Simulation Directory and Build Artifacts
+sim/
+!sim/.keep
+*.vcd
+*.fst
+*.log
+
+# Verilator Output
+obj_dir/
+
+# OS Generated Files
+.DS_Store
+*~
